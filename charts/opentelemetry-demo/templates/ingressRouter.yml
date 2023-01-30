@@ -10,9 +10,39 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`{{ .Values.ingressRoute.host }}`)
+      match: Host(`{{ .Values.ingress.host }}`)
       services:
         - kind: Service
-          name: "{{ .Release.Name }}-frontendproxy"
+          name: "{{ .Release.Name }}-frontend"
           port: 8080
+    - kind: Rule
+      match: Host(`{{ .Values.ingress.host }}`) && PathPrefix(`/grafana`)
+      services:
+        - kind: Service
+          name: "{{ .Release.Name }}-grafana"
+          port: 80
+    - kind: Rule
+      match: Host(`{{ .Values.ingress.host }}`) && PathPrefix(`/feature`)
+      services:
+        - kind: Service
+          name: "{{ .Release.Name }}-featureflagservice"
+          port: 8081
+    - kind: Rule
+      match: Host(`{{ .Values.ingress.host }}`) && PathPrefix(`/loadgen`)
+      services:
+        - kind: Service
+          name: "{{ .Release.Name }}-loadgenerator"
+          port: 8089
+    - kind: Rule
+      match: Host(`{{ .Values.ingress.host }}`) && PathPrefix(`/jaeger/ui`)
+      services:
+        - kind: Service
+          name: "{{ .Release.Name }}-jaeger-query"
+          port: 16686
+    - kind: Rule
+      match: Host(`{{ .Values.ingress.host }}`) && PathPrefix(`/v1/traces`)
+      services:
+        - kind: Service
+          name: "{{ .Release.Name }}-otelcol"
+          port: 4318
   tls: {}

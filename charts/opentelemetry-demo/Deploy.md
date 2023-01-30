@@ -13,33 +13,33 @@ helm package charts/opentelemetry-demo/ -d charts/opentelemetry-demo/
 
 # 2. Install
 helm install \
+--namespace open-telemetry \
 otel-demo \
 /etc/kubernetes/charts/opentelemetry-demo-0.16.0.tgz \
---namespace open-telemetry \
 -f /etc/kubernetes/charts/opentelemetry-demo-0.16.0.yaml
 
 # 3. Upgrade
 helm upgrade \
+--namespace open-telemetry \
 otel-demo \
 /etc/kubernetes/charts/opentelemetry-demo-0.16.0.tgz \
---namespace open-telemetry \
 -f /etc/kubernetes/charts/opentelemetry-demo-0.16.0.yaml
 
 # 4. Uninstall
 helm uninstall \
-otel-demo \
---namespace open-telemetry
+--namespace open-telemetry \
+otel-demo 
 
 # 5. Template
 helm template \
---namespace open-telemetry
+--namespace open-telemetry \
 otel-demo \
 charts/opentelemetry-demo/ \
 -f charts/opentelemetry-demo/values-amd64.yaml > \
 charts/opentelemetry-demo/dist.yaml
 ```
 
-## images_x86-64
+## images
 
 ```bash
 # github.com/open-telemetry/opentelemetry-demo
@@ -141,20 +141,4 @@ docker push registry.cn-qingdao.aliyuncs.com/wod/jaeger:1.39.0
 docker pull grafana/grafana:9.3.1 && \
 docker tag grafana/grafana:9.3.1 registry.cn-qingdao.aliyuncs.com/wod/grafana:9.3.1 && \
 docker push registry.cn-qingdao.aliyuncs.com/wod/grafana:9.3.1
-```
-
-## images_arm64
-
-```bash
-# github.com/mengkzhaoyun/proxyv2
-registry.cn-qingdao.aliyuncs.com/wod/istio-proxyv2:1.16.0-arm64
-
-# github.com/mengkzhaoyun/pilot
-registry.cn-qingdao.aliyuncs.com/wod/istio-pilot:1.16.0-arm64
-
-# github.com/mengkzhaoyun/kiali
-registry.cn-qingdao.aliyuncs.com/wod/kiali:v1.43.0-arm64
-
-# github.com/mengkzhaoyun/jaeger
-registry.cn-qingdao.aliyuncs.com/wod/jaeger:v1.27.0-arm64
 ```

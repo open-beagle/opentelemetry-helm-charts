@@ -57,3 +57,7 @@ app.kubernetes.io/component: {{ .name}}
 {{- $mergedEnvs = concat $mergedEnvs $envOverrides }}
 {{- mustToJson $mergedEnvs }}
 {{- end }}
+
+{{- define "otel-demo.host" -}}
+{{ .Values.ingress.host }}
+{{- end }}

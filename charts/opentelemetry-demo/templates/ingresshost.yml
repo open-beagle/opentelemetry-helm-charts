@@ -6,4 +6,4 @@ metadata:
   labels:
     {{- include "otel-demo.labels" . | nindent 4 }}
 spec:
-  host: {{ .Values.ingressRoute.host }}
+  host: {{ .Values.ingress.host }}

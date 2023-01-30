@@ -1,4 +1,4 @@
-ingressRoute:
+ingress:
   host: otel.wodcloud.local
 
 default:
@@ -7,6 +7,11 @@ default:
     tag: "1.2.1"
 
 components:
+  frontend:
+    envOverrides:
+      - name: PUBLIC_OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
+        value: https://otel.wodcloud.local/v1/traces
+
   ffsPostgres:
     enabled: true
     imageOverride:
