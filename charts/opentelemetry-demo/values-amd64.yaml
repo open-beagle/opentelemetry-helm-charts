@@ -1,0 +1,41 @@
+ingressRoute:
+  host: otel.wodcloud.local
+
+default:
+  image:
+    repository: registry.cn-qingdao.aliyuncs.com/wod/open-telemetry-demo
+    tag: "1.2.1"
+
+components:
+  ffsPostgres:
+    enabled: true
+    imageOverride:
+      repository: "registry.cn-qingdao.aliyuncs.com/wod/postgres"
+      tag: "14"
+
+  redis:
+    enabled: true
+    imageOverride:
+      repository: "registry.cn-qingdao.aliyuncs.com/wod/redis"
+      tag: "alpine"
+
+opentelemetry-collector:
+  image:
+    repository: registry.cn-qingdao.aliyuncs.com/wod/opentelemetry-collector-contrib
+    tag: "0.69.0"
+
+jaeger:
+  tag: "1.39.0"
+  allInOne:
+    image: registry.cn-qingdao.aliyuncs.com/wod/jaeger
+
+prometheus:
+  server:
+    image:
+      repository: registry.cn-qingdao.aliyuncs.com/wod/prometheus
+      tag: "v2.41.0"
+
+grafana:
+  image:
+    repository: registry.cn-qingdao.aliyuncs.com/wod/grafana
+    tag: "9.3.1"

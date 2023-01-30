@@ -1,0 +1,9 @@
+apiVersion: bcc.bd-apaas.com/v1alpha1
+kind: IngressHost
+metadata:
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace}}
+  labels:
+    {{- include "otel-demo.labels" . | nindent 4 }}
+spec:
+  host: {{ .Values.ingressRoute.host }}

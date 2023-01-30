@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/schema#",
   "type": "object",
   "title": "Values",
-  "additionalProperties": false,
+  "additionalProperties": true,
   "properties": {
     "enabled": {
       "description": "Usually used when using Opentelemetry-demo as a subchart.",
