@@ -10,13 +10,13 @@ components:
   ffsPostgres:
     enabled: true
     imageOverride:
-      repository: "registry.cn-qingdao.aliyuncs.com/wod/postgres"
+      repository: registry.cn-qingdao.aliyuncs.com/wod/postgres
       tag: "14"
 
   redis:
     enabled: true
     imageOverride:
-      repository: "registry.cn-qingdao.aliyuncs.com/wod/redis"
+      repository: registry.cn-qingdao.aliyuncs.com/wod/redis
       tag: "alpine"
 
 opentelemetry-collector:
